@@ -42,17 +42,17 @@ the branch before treating it as pre-existing.
 
 ## Commit conventions
 - **Format:** conventional commits: `<tag>(<scope>): summary` — tags: feat fix refactor perf test docs chore
-- **Scopes:** the feature area (`invoices`, `reports`, `floor-plan`, `api`, …)
+- **Scopes:** the feature area (`billing`, `reports`, `auth`, `api`, …)
 - **Trailer:** None
 - **PR body footer:** `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 - **Never stage:** `.env`, `.claude/settings.local.json`, `node_modules/`, `.next/`, `*.pem` dev certs, designer assets you didn't intentionally change
 
 ## Cross-cutting surfaces (easy to break silently — checked by /commit and /ship)
 - Generated API types (`src/types/api.d.ts`) → regenerated via `npm run gen:api`, never hand-edited
-- New endpoint hooks → cache-bust prefix keys added to the `bust*Caches` helper?
-- Shared portal views → `routes` prop kept so links stay in the right portal?
+- New endpoint hooks → cache-bust prefix keys added to the cache-invalidation helper?
+- Views shared across user roles → role-aware `routes` prop kept so links stay in the right area?
 - Dark mode → `theme.vars.palette.*` (not `theme.palette.*`) in `sx`?
-- Permission-gated UI → `usePermission` / `useEventPermission` wrapped?
+- Permission-gated UI → wrapped in the permission hook?
 
 ## Conventions checklist (architecture rules /plan-feature and /execute enforce)
 - Page files are thin — they import a view from `src/sections/.../views/`
@@ -63,9 +63,9 @@ the branch before treating it as pre-existing.
 - Money is a string; lists use the pagination envelope (`.results`); 404-not-403
 
 ## Manual verification
-Exercise on the right surface: `admin.localhost:8082` (staff),
-`<slug>.localhost:8082` (event portal), `localhost:8082` (apex). Confirm
-pagination renders, cookies flow, dark mode holds.
+Run the dev server and exercise the change on every surface it touches
+(e.g. admin subdomain vs. customer-facing app, if the project is multi-tenant).
+Confirm pagination renders, auth cookies flow, dark mode holds.
 
 ## Areas / modules
 <!-- Your feature-area vocabulary, so plans and commit scopes name things
