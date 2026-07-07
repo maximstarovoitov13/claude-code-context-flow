@@ -1,5 +1,7 @@
 # context-flow
 
+![version](https://img.shields.io/badge/version-0.1.0-blue) ![license](https://img.shields.io/badge/license-MIT-green) ![claude code](https://img.shields.io/badge/Claude%20Code-plugin-6e40c9)
+
 **A context-management lifecycle for Claude Code.** Five skills — `/plan-feature → /execute → /commit → /ship → /handoff` — plus an init command that adapts them to any stack.
 
 The core idea: **a session's context window is a scratchpad, not a memory.** Anything worth keeping is externalized into durable files; anything not worth keeping is deliberately thrown away by starting fresh sessions. The model works best when its context contains only what the current task needs.
@@ -32,21 +34,9 @@ This detects your stack (Django, Next.js, Go, Rust, Rails, …), asks a few ques
 
 ## The lifecycle
 
-```
-/plan-feature  ──►  context/plans/feature.md          (throw-away research session)
-     │ /clear
-     ▼
-/execute plan (Phase 1 tasks)                          (fresh session)
-     │
-/commit  ──►  /ship  ──►  merged, plan updated, main green
-     │ /clear
-     ▼
-/execute plan (Phase 2 tasks)                          (fresh session — reads the
-     │                                                  plan, NOT a handoff: the
-    ...                                                 plan IS the handoff for
-     ▼                                                  planned work)
-final /ship  ──►  plan → context/plans/shipped/, CLAUDE.md finalized
-```
+![The context-flow lifecycle](assets/lifecycle.svg)
+
+A feature is split into phases; each phase = one branch = one reviewable PR, shipped per **main-safe slice**. Between cleanly-shipped phases there is no handoff — the plan file (with tasks ticked) *is* the handoff. `/handoff` exists only for the exception path: interrupted work.
 
 | Skill | What it does |
 |---|---|
