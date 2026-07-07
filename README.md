@@ -18,7 +18,7 @@ The fix is not bigger windows — it's **externalize + reset**. A fresh session 
 ## Install
 
 ```
-/plugin marketplace add maximstarovoitov13/context-flow
+/plugin marketplace add maximstarovoitov13/claude-code-context-flow
 /plugin install context-flow@context-flow-marketplace
 ```
 
