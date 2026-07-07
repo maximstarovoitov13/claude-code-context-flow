@@ -59,6 +59,5 @@ Hit the affected endpoint with the dev server (`venv/bin/python manage.py runser
 or the relevant management command; check audit rows and notification previews.
 
 ## Areas / modules
-accounts / audit / notifications / companies / events / venues / exhibitors /
-contractors / documents / billing / invoices / payments / service_orders /
-checklists / reports / uploader / common
+<!-- Your Django apps, so plans and commit scopes name things consistently. e.g.: -->
+accounts / audit / billing / notifications / reports / common

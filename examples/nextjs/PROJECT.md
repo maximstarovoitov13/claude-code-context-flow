@@ -68,6 +68,6 @@ Exercise on the right surface: `admin.localhost:8082` (staff),
 pagination renders, cookies flow, dark mode holds.
 
 ## Areas / modules
-events / companies / finance (invoices, payments) / floor-plans / booths /
-service-orders / contractors / exhibitors / documents / compliance / reports /
-onboarding / notifications / settings / users / venues
+<!-- Your feature-area vocabulary, so plans and commit scopes name things
+     consistently. e.g.: -->
+auth / billing / reports / notifications / settings / users
