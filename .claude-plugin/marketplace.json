@@ -1,0 +1,13 @@
+{
+  "name": "context-flow-marketplace",
+  "owner": {
+    "name": "Maxim Starovoitov"
+  },
+  "plugins": [
+    {
+      "name": "context-flow",
+      "source": "./",
+      "description": "Context management lifecycle for Claude Code: plan → execute → commit → ship → handoff."
+    }
+  ]
+}

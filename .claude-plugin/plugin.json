@@ -1,0 +1,10 @@
+{
+  "name": "context-flow",
+  "description": "Context management lifecycle for Claude Code: plan → execute → commit → ship → handoff. Treats the context window as a scratchpad — durable state lives in files.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Maxim Starovoitov"
+  },
+  "homepage": "https://github.com/maximstarovoitov/context-flow",
+  "keywords": ["context-management", "workflow", "planning", "handoff", "session-lifecycle"]
+}
